@@ -22,7 +22,7 @@ public class CardDelivery {
         // daysAdded выглядит, наверное, как лишняя переменная (если уж переменная - то лучше в самом тесте, а тут можно было просто значение подставить)
         // но я реализовал так, чтобы потом сделать рандомайзер, т.е. чтобы deliveryDate возвращал
         // случайную дату, подходящую под ТЗ и в нужном формате
-        // считаю, что ТЗ в ДЗ соответствует и в таком виде - "не ранее трёх дней с текущей даты"
+        // считаю, что ТЗ из ДЗ соответствует и в таком виде - "не ранее трёх дней с текущей даты"
 
         return today.plusDays(daysAdded).format(dtf);
     }
@@ -40,7 +40,7 @@ public class CardDelivery {
         $("[data-test-id='agreement']>span").click();
         $$("button").find(exactText("Забронировать")).click();
         $("[class='notification__content']")
-                .shouldHave(Condition.text("Встреча успешно забронирована на " + "13.04.2022")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + deliveryDate())
                         , Duration.ofSeconds(15));
     }
 }
